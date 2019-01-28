@@ -1,28 +1,24 @@
-defmodule Engine.Content do
-  import Ecto.Query
+defmodule Engine.Content.Post do
+  use Ecto.Schema
+  import Ecto.Changeset
 
-  alias Engine.{Repo, Content}
+  alias Engine.{Accounts, Content}
 
-  def list_posts(author, %{date: date}) do
-    from(t in Content.Post,
-      where: t.author_id == ^author.id,
-      where: fragment("date_trunc('day', ?)", t.published_at) == type(^date, :date)
-    )
-    |> Repo.all()
+  schema "posts" do
+    field :body, :string
+    field :published_at, :naive_datetime
+    field :title, :string
+
+    belongs_to :author, Accounts.User
+
+    timestamps()
   end
 
-  def list_posts(author, _) do
-    from(t in Content.Post, where: t.author_id == ^author.id)
-    |> Repo.all()
-  end
+  @doc false
 
-  def list_posts do
-    Repo.all(Content.Post)
-  end
-
-  def create_post(user, attr) do
-    user
-    |> Ecto.build_assoc(:posts, attrs)
-    |> Repo.insert()
+  def changeset(%Content.Post{} = post, attrs) do
+    post
+    |> cast(attrs, [:title, :body, :published_at])
+    |> validate_required([:title, :body])
   end
 end

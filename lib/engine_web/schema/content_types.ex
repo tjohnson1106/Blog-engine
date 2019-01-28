@@ -1,4 +1,4 @@
-defmodule EngineWeb.Schema.Types do
+defmodule EngineWeb.Schema.ContentTypes do
   use Absinthe.Schema.Notation
 
   object :post do

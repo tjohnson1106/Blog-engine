@@ -24,7 +24,7 @@ defmodule Engine.Accounts do
 
   defp do_create_user(attrs, contact) do
     attrs
-    |> Map.put(:contact_id, contact_id)
+    |> Map.put(:contact_id, contact.id)
     |> Accounts.User.changeset()
     |> Engine.Repo.insert()
   end

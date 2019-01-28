@@ -15,7 +15,6 @@ defmodule Engine.Content.Post do
   end
 
   @doc false
-
   def changeset(%Content.Post{} = post, attrs) do
     post
     |> cast(attrs, [:title, :body, :published_at])

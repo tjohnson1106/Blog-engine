@@ -4,6 +4,8 @@ defmodule EngineWeb.Schema do
   import_types(__MODULE__.ContentTypes)
   import_types(__MODULE__.AccountTypes)
 
+  import_types(Absinthe.Type.Custom)
+
   alias EngineWeb.Resolvers
 
   query do

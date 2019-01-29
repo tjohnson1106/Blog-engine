@@ -20,4 +20,15 @@ defmodule EngineWeb.Schema do
       resolve(&Resolvers.Accounts.find_user/3)
     end
   end
+
+  mutation do
+    @desc "Create a post"
+    field :create_post, type: :post do
+      arg(:title, non_null(:string))
+      arg(:body, non_null(:string))
+      arg(:published_at, :naive_datetime)
+
+      resolve(&Resolvers.Content.create_post/3)
+    end
+  end
 end

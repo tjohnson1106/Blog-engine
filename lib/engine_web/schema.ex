@@ -1,10 +1,12 @@
 defmodule EngineWeb.Schema do
   use Absinthe.Schema
 
-  import_types(__MODULE__.ContentTypes)
-  import_types(__MODULE__.AccountTypes)
+  # import_types(__MODULE__.ContentTypes)
+  # import_types(__MODULE__.AccountTypes)
 
   import_types(Absinthe.Type.Custom)
+  import_types(EngineWeb.Schema.AccountTypes)
+  import_types(EngineWeb.Schema.ContentTypes)
 
   alias EngineWeb.Resolvers
 

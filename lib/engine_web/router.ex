@@ -8,8 +8,11 @@ defmodule EngineWeb.Router do
   scope "/api" do
     pipe_through :api
 
-    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: EngineWeb.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: EngineWeb.Schema,
+      schema: EngineWeb.Schema,
+      json_codec: Jason
 
-    forward "/", Absinthe.Plug, schema: EngineWeb.Schema
+    forward "/", Absinthe.Plug
   end
 end

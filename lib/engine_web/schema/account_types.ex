@@ -14,4 +14,16 @@ defmodule EngineWeb.Schema.AccountTypes do
       resolve(&Resolvers.Content.list_posts/3)
     end
   end
+
+  @desc "User contact types"
+  enum :contact_type do
+    value(:phone, as: "phone")
+    value(:email, as: "email")
+  end
+
+  @desc "A user contact for input"
+  input_object :contact_input do
+    field :type, non_null(:contact_type)
+    field :value, non_null(:string)
+  end
 end

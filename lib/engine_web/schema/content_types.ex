@@ -5,5 +5,6 @@ defmodule EngineWeb.Schema.ContentTypes do
     field :id, :id
     field :title, :string
     field :body, :string
+    field :author, :user
   end
 end

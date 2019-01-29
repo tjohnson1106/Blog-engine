@@ -1,4 +1,4 @@
-defmodule EngineWeb.AccountTypes do
+defmodule EngineWeb.Schema.AccountTypes do
   use Absinthe.Schema.Notation
 
   @desc "A blog user"
